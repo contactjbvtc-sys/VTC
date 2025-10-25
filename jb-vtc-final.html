@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JB VTC RÉUNION - Chauffeur Privé Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00d4ff;
+            --secondary: #1a1a1a;
+            --accent: #0099ff;
+            --text-light: #f5f5f5;
+            --text-dark: #333;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #000;
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .logo-nav {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--primary);
+            letter-spacing: 2px;
+        }
+
+        .nav-btn {
+            background: var(--primary);
+            color: #000;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+        }
+
+        .nav-btn:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1590071537568-852f54e5e8fa?w=2000&q=90') center/cover;
+            z-index: 0;
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 20px;
+            max-width: 1000px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.2);
+            color: var(--primary);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            border: 1px solid var(--primary);
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(50px, 10vw, 120px);
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            line-height: 1.1;
+        }
+
+        .hero-title span {
+            color: var(--primary);
+            display: block;
+            font-size: clamp(30px, 6vw, 70px);
+            margin-top: 10px;
+        }
+
+        .hero-description {
+            font-size: clamp(16px, 2vw, 22px);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #000;
+            padding: 20px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.4s ease;
+            border: 2px solid var(--primary);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            padding: 20px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.4s ease;
+            border: 2px solid #fff;
+        }
+
+        .btn-secondary:hover {
+            background: #fff;
+            color: #000;
+            transform: translateY(-5px);
+        }
+
+        /* Booking Section */
+        .booking-section {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .booking-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .booking-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 60px;
+            border-radius: 30px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            box-shadow: 0 30px 80px rgba(0, 212, 255, 0.1);
+        }
+
+        .booking-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .booking-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .booking-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .booking-subtitle {
+            font-size: 16px;
+            color: #aaa;
+        }
+
+        .booking-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .booking-option-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-option-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3);
+        }
+
+        .booking-option-featured {
+            border-color: var(--primary);
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: #000;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .booking-option-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .booking-option-title {
+            font-size: 28px;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .booking-option-description {
+            font-size: 15px;
+            color: #aaa;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .booking-option-features {
+            list-style: none;
+            margin-bottom: 30px;
+            padding: 0;
+        }
+
+        .booking-option-features li {
+            font-size: 14px;
+            color: #ccc;
+            margin-bottom: 10px;
+            padding-left: 5px;
+        }
+
+        .btn-booking {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-booking:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.02);
+        }
+
+        .btn-booking-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: #000;
+            border-color: var(--primary);
+            font-size: 17px;
+        }
+
+        .btn-booking-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+        }
+
+        .booking-contact-bar {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .booking-contact-text {
+            font-size: 16px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .booking-contact-text strong {
+            color: var(--primary);
+        }
+
+        .booking-contact-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-contact {
+            display: inline-block;
+            padding: 15px 35px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-contact:hover {
+            background: var(--primary);
+            color: #000;
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .booking-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .booking-feature {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .booking-feature-icon {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .booking-feature-text {
+            font-size: 14px;
+            color: #aaa;
+            font-weight: 600;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: #000;
+            padding: 80px 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 50px;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Features Section */
+        .features-section {
+            background: linear-gradient(180deg, #000 0%, #1a1a1a 100%);
+            padding: 120px 20px;
+            position: relative;
+        }
+
+        .features-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-subtitle {
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(40px, 6vw, 65px);
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: #999;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            padding: 50px 40px;
+            border-radius: 25px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--primary);
+            box-shadow: 0 30px 80px rgba(0, 212, 255, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 60px;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .feature-description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #aaa;
+        }
+
+        /* Destinations Gallery */
+        .gallery-section {
+            background: #000;
+            padding: 120px 20px;
+        }
+
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .destination-card {
+            position: relative;
+            height: 500px;
+            border-radius: 25px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .destination-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.9) 100%);
+            transition: all 0.5s ease;
+        }
+
+        .destination-card:hover::after {
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
+        }
+
+        .destination-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .destination-card:hover .destination-img {
+            transform: scale(1.15);
+        }
+
+        .destination-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px;
+            z-index: 2;
+            transform: translateY(0);
+            transition: transform 0.5s ease;
+        }
+
+        .destination-tag {
+            display: inline-block;
+            background: var(--primary);
+            color: #000;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .destination-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .destination-description {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .destination-card:hover .destination-description {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            background: linear-gradient(180deg, #1a1a1a 0%, #000 100%);
+            padding: 120px 20px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .testimonial-stars {
+            color: var(--primary);
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .testimonial-role {
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, var(--primary) 0%, #0099ff 100%);
+            padding: 120px 20px;
+            position: relative;
+        }
+
+        .contact-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .contact-info-card {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 50px;
+            border-radius: 25px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-info-card:hover {
+            transform: translateY(-10px);
+            border-color: #fff;
+        }
+
+        .contact-info-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .contact-info-value {
+            font-size: 20px;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .contact-info-value a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info-value a:hover {
+            color: var(--primary);
+        }
+
+        .cta-large {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .btn-cta-large {
+            display: inline-block;
+            background: #000;
+            color: var(--primary);
+            padding: 25px 70px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 22px;
+            transition: all 0.4s ease;
+            border: 3px solid #000;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-cta-large:hover {
+            transform: scale(1.08) translateY(-5px);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.7);
+        }
+
+        /* NFC Section */
+        .nfc-section {
+            background: #000;
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .nfc-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 60px;
+            border-radius: 30px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .nfc-content {
+            text-align: left;
+        }
+
+        .nfc-icon {
+            font-size: 70px;
+            margin-bottom: 20px;
+        }
+
+        .nfc-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .nfc-description {
+            font-size: 16px;
+            color: #aaa;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .nfc-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn-nfc {
+            display: inline-block;
+            padding: 20px 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 18px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 2px solid var(--primary);
+        }
+
+        .btn-nfc:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.5);
+        }
+
+        .btn-nfc-outline {
+            background: transparent;
+            color: #fff;
+            border-color: #fff;
+        }
+
+        .btn-nfc-outline:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .qr-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .qr-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3);
+        }
+
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 15px;
+        }
+
+        .qr-label {
+            font-size: 14px;
+            color: #333;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .nfc-info-box {
+            max-width: 800px;
+            margin: 50px auto 0;
+            background: rgba(0, 212, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            text-align: center;
+        }
+
+        .nfc-info-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .nfc-info-text {
+            font-size: 15px;
+            color: #aaa;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        .footer {
+            background: #000;
+            padding: 60px 20px 30px;
+            text-align: center;
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .footer-tagline {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(0, 212, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            text-decoration: none;
+            color: var(--primary);
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+            color: #000;
+        }
+
+        .footer-copyright {
+            font-size: 14px;
+            color: #555;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .destinations-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            
+            .destination-card {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .booking-container {
+                padding: 30px 20px;
+            }
+
+            .nfc-container {
+                grid-template-columns: 1fr;
+                padding: 40px 20px;
+                gap: 40px;
+            }
+
+            .nfc-content {
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 50px;
+            }
+
+            .features-grid,
+            .destinations-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card,
+            .testimonial-card,
+            .contact-info-card {
+                padding: 30px;
+            }
+
+            .features-section,
+            .gallery-section,
+            .testimonials-section,
+            .contact-section,
+            .booking-section,
+            .nfc-section {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo-nav">JB VTC</div>
+        <a href="tel:+262693104519" class="nav-btn">📞 06 93 10 45 19</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-badge">★ SERVICE PREMIUM 24/7 ★</div>
+            <h1 class="hero-title">
+                JB VTC RÉUNION
+                <span>Votre Chauffeur Privé d'Exception</span>
+            </h1>
+            <p class="hero-description">
+                Découvrez l'excellence du transport privé sur l'île de la Réunion. 
+                Confort, ponctualité et professionnalisme pour tous vos déplacements.
+            </p>
+            <div class="hero-buttons">
+                <a href="tel:+262693104519" class="btn-primary">📞 Réserver Maintenant</a>
+                <a href="https://www.jb-vtc.fr" target="_blank" class="btn-secondary">En savoir plus</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking-section">
+        <div class="container">
+            <div class="booking-container">
+                <div class="booking-header">
+                    <div class="booking-icon">🚗</div>
+                    <h2 class="booking-title">Réservez Votre Trajet</h2>
+                    <p class="booking-subtitle">Choisissez votre type de réservation et obtenez votre devis instantanément</p>
+                </div>
+
+                <div class="booking-options">
+                    <div class="booking-option-card">
+                        <div class="booking-option-icon">✈️</div>
+                        <h3 class="booking-option-title">Transfert Aéroport</h3>
+                        <p class="booking-option-description">
+                            Réservez votre transfert depuis/vers l'aéroport Roland Garros. 
+                            Service 24/7 avec suivi de vol en temps réel.
+                        </p>
+                        <ul class="booking-option-features">
+                            <li>✓ Accueil personnalisé</li>
+                            <li>✓ Suivi des vols</li>
+                            <li>✓ Tarifs fixes</li>
+                            <li>✓ Disponible 24/7</li>
+                        </ul>
+                        <a href="https://www.jb-vtc.fr/tarif-transfert-aeroport" target="_blank" class="btn-booking">
+                            Réserver Transfert Aéroport →
+                        </a>
+                    </div>
+
+                    <div class="booking-option-card booking-option-featured">
+                        <div class="featured-badge">POPULAIRE</div>
+                        <div class="booking-option-icon">🚗</div>
+                        <h3 class="booking-option-title">Réservation Générale</h3>
+                        <p class="booking-option-description">
+                            Circuits touristiques, déplacements professionnels, événements privés 
+                            et toutes autres courses sur l'île.
+                        </p>
+                        <ul class="booking-option-features">
+                            <li>✓ Tous types de trajets</li>
+                            <li>✓ Devis instantané</li>
+                            <li>✓ Paiement flexible</li>
+                            <li>✓ Chauffeur expérimenté</li>
+                        </ul>
+                        <a href="https://www.jb-vtc.fr/reserver-vtc-a-la-reunion" target="_blank" class="btn-booking btn-booking-primary">
+                            Réserver Maintenant →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="booking-contact-bar">
+                    <p class="booking-contact-text">
+                        <strong>Besoin d'aide ou d'une réservation urgente ?</strong>
+                    </p>
+                    <div class="booking-contact-buttons">
+                        <a href="tel:+262693104519" class="btn-contact">📞 06 93 10 45 19</a>
+                        <a href="mailto:contact.jbvtc@gmail.com" class="btn-contact">📧 Email</a>
+                    </div>
+                </div>
+
+                <div class="booking-features">
+                    <div class="booking-feature">
+                        <div class="booking-feature-icon">✅</div>
+                        <div class="booking-feature-text">Devis Gratuit</div>
+                    </div>
+                    <div class="booking-feature">
+                        <div class="booking-feature-icon">⚡</div>
+                        <div class="booking-feature-text">Réponse Rapide</div>
+                    </div>
+                    <div class="booking-feature">
+                        <div class="booking-feature-icon">🔒</div>
+                        <div class="booking-feature-text">100% Sécurisé</div>
+                    </div>
+                    <div class="booking-feature">
+                        <div class="booking-feature-icon">📞</div>
+                        <div class="booking-feature-text">Support 24/7</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Disponibilité</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Satisfaction</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5★</div>
+                    <div class="stat-label">Avis Clients</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Destinations</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">NOS SERVICES PREMIUM</div>
+                <h2 class="section-title">Excellence à Chaque Trajet</h2>
+                <p class="section-description">
+                    Des prestations sur-mesure pour répondre à tous vos besoins de transport sur l'île de la Réunion
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">✈️</span>
+                    <h3 class="feature-title">Transferts Aéroport</h3>
+                    <p class="feature-description">
+                        Service 24/7 depuis et vers l'aéroport Roland Garros. Suivi des vols en temps réel, 
+                        accueil personnalisé et ponctualité garantie pour votre tranquillité d'esprit.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🏝️</span>
+                    <h3 class="feature-title">Circuits Touristiques</h3>
+                    <p class="feature-description">
+                        Explorez les trésors de l'île : Piton de la Fournaise, cirques de Cilaos et Mafate, 
+                        cascades sauvages. Votre chauffeur-guide passionné vous dévoile les secrets de l'île intense.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">💼</span>
+                    <h3 class="feature-title">Business & Séminaires</h3>
+                    <p class="feature-description">
+                        Transport professionnel discret et élégant pour vos rendez-vous d'affaires, 
+                        séminaires et événements corporate. Efficacité et représentation premium garanties.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🎉</span>
+                    <h3 class="feature-title">Événements Privés</h3>
+                    <p class="feature-description">
+                        Mariages, anniversaires, soirées de gala. Profitez pleinement de vos moments 
+                        exceptionnels sans vous soucier du transport. Service VIP à votre disposition.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">⚡</span>
+                    <h3 class="feature-title">Courses Express</h3>
+                    <p class="feature-description">
+                        Besoin urgent d'un transport ? Intervention rapide pour toutes vos courses 
+                        de dernière minute. Fiabilité et réactivité à toute heure.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🌙</span>
+                    <h3 class="feature-title">Service Nocturne</h3>
+                    <p class="feature-description">
+                        Disponible 24h/24, 7j/7, dimanches et jours fériés inclus. 
+                        Rentrez en toute sécurité après vos soirées. Votre sérénité est notre priorité.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">DÉCOUVREZ L'ÎLE INTENSE</div>
+                <h2 class="section-title">Destinations d'Exception</h2>
+                <p class="section-description">
+                    Laissez-vous guider vers les sites les plus spectaculaires de l'île de la Réunion
+                </p>
+            </div>
+            <div class="destinations-grid">
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1590071537568-852f54e5e8fa?w=800&q=90" alt="Piton de la Fournaise" class="destination-img">
+                    <div class="destination-content">
+                        <span class="destination-tag">VOLCAN ACTIF</span>
+                        <h3 class="destination-title">Piton de la Fournaise</h3>
+                        <p class="destination-description">
+                            L'un des volcans les plus actifs au monde. Paysages lunaires à couper le souffle et 
+                            coulées de lave spectaculaires. Une expérience unique et inoubliable.
+                        </p>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=90" alt="Cirque de Mafate" class="destination-img">
+                    <div class="destination-content">
+                        <span class="destination-tag">UNESCO</span>
+                        <h3 class="destination-title">Cirque de Mafate</h3>
+                        <p class="destination-description">
+                            Site classé au patrimoine mondial. Accessible uniquement à pied ou en hélicoptère. 
+                            Nature préservée et villages créoles authentiques perchés dans les hauteurs.
+                        </p>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=90" alt="Plages de l'Ouest" class="destination-img">
+                    <div class="destination-content">
+                        <span class="destination-tag">PARADISIAQUE</span>
+                        <h3 class="destination-title">Plages de Saint-Gilles</h3>
+                        <p class="destination-description">
+                            Lagons turquoise et sable blanc protégés par la barrière de corail. 
+                            Eaux cristallines idéales pour la plongée et le snorkeling. Détente garantie.
+                        </p>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=800&q=90" alt="Cascades" class="destination-img">
+                    <div class="destination-content">
+                        <span class="destination-tag">NATURE SAUVAGE</span>
+                        <h3 class="destination-title">Cascades & Bassins</h3>
+                        <p class="destination-description">
+                            Cascades majestueuses nichées dans une végétation luxuriante tropicale. 
+                            Bassins naturels d'eau pure pour des baignades rafraîchissantes en pleine nature.
+                        </p>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=90" alt="Cirque de Cilaos" class="destination-img">
+                    <div class="destination-content">
+                        <span class="destination-tag">MONTAGNE</span>
+                        <h3 class="destination-title">Cirque de Cilaos</h3>
+                        <p class="destination-description">
+                            Station thermale nichée au cœur des montagnes. Pitons vertigineux, 
+                            vignobles d'altitude et artisanat local. Panoramas exceptionnels garantis.
+                        </p>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?w=800&q=90" alt="Maïdo" class="destination-img">
+                    <div class="destination-content">
+                        <span class="destination-tag">PANORAMA 360°</span>
+                        <h3 class="destination-title">Le Maïdo</h3>
+                        <p class="destination-description">
+                            Point de vue emblématique à 2200m d'altitude offrant une vue plongeante 
+                            sur le cirque de Mafate. Mer de nuages au lever du soleil. Spectacle grandiose.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">TÉMOIGNAGES CLIENTS</div>
+                <h2 class="section-title">Ils Nous Font Confiance</h2>
+                <p class="section-description">
+                    La satisfaction de nos clients est notre plus belle récompense
+                </p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        "Service impeccable, chauffeur très professionnel et excursions inoubliables 
+                        sur l'île de la Réunion. JB connaît parfaitement l'île et nous a fait découvrir 
+                        des endroits magiques. Je recommande vivement !"
+                    </p>
+                    <div class="testimonial-author">Sophie M.</div>
+                    <div class="testimonial-role">Touriste - Paris</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        "Ponctuel, fiable et très sympathique ! J'utilise les services de JB VTC 
+                        pour tous mes déplacements professionnels. Véhicule impeccable et conduite 
+                        irréprochable. Un vrai professionnel !"
+                    </p>
+                    <div class="testimonial-author">Marc L.</div>
+                    <div class="testimonial-role">Chef d'entreprise - Saint-Paul</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        "Transfert aéroport au top ! Malgré un retard de vol, le chauffeur nous 
+                        attendait avec le sourire. Service de qualité à prix raisonnable. 
+                        À recommander sans hésitation !"
+                    </p>
+                    <div class="testimonial-author">Julie & Thomas</div>
+                    <div class="testimonial-role">Couple de voyageurs - Lyon</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle" style="color: #000;">CONTACTEZ-NOUS</div>
+                <h2 class="section-title" style="color: #000;">Réservez Votre Course</h2>
+                <p class="section-description" style="color: #333;">
+                    Service disponible 24h/24 et 7j/7 pour tous vos déplacements
+                </p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info-card">
+                    <div class="contact-info-icon">📱</div>
+                    <div class="contact-info-title">Téléphone</div>
+                    <div class="contact-info-value">
+                        <a href="tel:+262693104519">06 93 10 45 19</a>
+                    </div>
+                </div>
+                <div class="contact-info-card">
+                    <div class="contact-info-icon">📧</div>
+                    <div class="contact-info-title">Email</div>
+                    <div class="contact-info-value">
+                        <a href="mailto:contact.jbvtc@gmail.com">contact.jbvtc@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-info-card">
+                    <div class="contact-info-icon">🌐</div>
+                    <div class="contact-info-title">Site Web</div>
+                    <div class="contact-info-value">
+                        <a href="https://www.jb-vtc.fr" target="_blank">www.jb-vtc.fr</a>
+                    </div>
+                </div>
+                <div class="contact-info-card">
+                    <div class="contact-info-icon">📘</div>
+                    <div class="contact-info-title">Facebook</div>
+                    <div class="contact-info-value">
+                        <a href="https://www.facebook.com/JBVTCReunion" target="_blank">JB VTC RÉUNION</a>
+                    </div>
+                </div>
+            </div>
+            <div class="cta-large">
+                <a href="tel:+262693104519" class="btn-cta-large">
+                    📞 APPELER MAINTENANT
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- NFC & Contact Section -->
+    <section class="nfc-section">
+        <div class="container">
+            <div class="nfc-container">
+                <div class="nfc-content">
+                    <div class="nfc-icon">📱</div>
+                    <h3 class="nfc-title">Enregistrez Mon Contact</h3>
+                    <p class="nfc-description">
+                        Ajoutez JB VTC RÉUNION à vos contacts en un clic et gardez toutes mes informations à portée de main !
+                    </p>
+                    <div class="nfc-buttons">
+                        <a href="jb-vtc-contact.vcf" download class="btn-nfc">
+                            📲 Ajouter aux Contacts
+                        </a>
+                        <a href="tel:+262693104519" class="btn-nfc btn-nfc-outline">
+                            📞 Appeler Maintenant
+                        </a>
+                    </div>
+                </div>
+                <div class="qr-container">
+                    <div class="qr-box">
+                        <svg class="qr-code" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- QR Code simulé pour l'effet visuel -->
+                            <rect x="10" y="10" width="40" height="40" fill="#00d4ff"/>
+                            <rect x="60" y="10" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="80" y="10" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="100" y="10" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="150" y="10" width="40" height="40" fill="#00d4ff"/>
+                            <rect x="20" y="20" width="20" height="20" fill="#000"/>
+                            <rect x="160" y="20" width="20" height="20" fill="#000"/>
+                            <rect x="10" y="60" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="30" y="60" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="50" y="60" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="70" y="60" width="20" height="20" fill="#00d4ff"/>
+                            <rect x="100" y="60" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="120" y="60" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="140" y="60" width="20" height="20" fill="#00d4ff"/>
+                            <rect x="170" y="60" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="10" y="80" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="50" y="80" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="90" y="80" width="20" height="20" fill="#00d4ff"/>
+                            <rect x="130" y="80" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="170" y="80" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="20" y="100" width="20" height="20" fill="#00d4ff"/>
+                            <rect x="60" y="100" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="110" y="100" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="150" y="100" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="180" y="100" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="10" y="120" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="40" y="120" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="80" y="120" width="20" height="20" fill="#00d4ff"/>
+                            <rect x="120" y="120" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="160" y="120" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="10" y="150" width="40" height="40" fill="#00d4ff"/>
+                            <rect x="60" y="150" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="80" y="150" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="110" y="150" width="20" height="20" fill="#00d4ff"/>
+                            <rect x="150" y="150" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="170" y="150" width="20" height="20" fill="#00d4ff"/>
+                            <rect x="20" y="160" width="20" height="20" fill="#000"/>
+                            <rect x="60" y="170" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="100" y="170" width="10" height="10" fill="#00d4ff"/>
+                            <rect x="140" y="170" width="10" height="10" fill="#00d4ff"/>
+                        </svg>
+                        <p class="qr-label">Scannez pour voir<br>ma carte de visite</p>
+                    </div>
+                </div>
+            </div>
+            <div class="nfc-info-box">
+                <h4 class="nfc-info-title">💳 Compatible NFC</h4>
+                <p class="nfc-info-text">
+                    Cette carte de visite peut être programmée sur une puce NFC. Approchez simplement votre téléphone 
+                    de la carte NFC pour accéder instantanément à toutes mes coordonnées !
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">JB VTC RÉUNION</div>
+        <p class="footer-tagline">
+            Chauffeur Privé Premium • Saint-Leu & Saint-Paul<br>
+            Excellence • Confort • Ponctualité • Service 24/7
+        </p>
+        <div class="footer-social">
+            <a href="https://www.facebook.com/JBVTCReunion" target="_blank" class="social-icon">📘</a>
+            <a href="mailto:contact.jbvtc@gmail.com" class="social-icon">📧</a>
+            <a href="tel:+262693104519" class="social-icon">📱</a>
+        </div>
+        <div class="footer-copyright">
+            © 2025 JB VTC RÉUNION - Tous droits réservés | Chauffeur Privé Professionnel Agréé
+        </div>
+    </footer>
+</body>
+</html>
